@@ -1061,8 +1061,10 @@ static inline NSString* _EncodeBase64(NSString* string) {
               if (allowRangeRequests) {
                 response = [GCDWebServerFileResponse responseWithFile:filePath byteRange:request.byteRange];
                 [response setValue:@"bytes" forAdditionalHeader:@"Accept-Ranges"];
+                [response setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
               } else {
                 response = [GCDWebServerFileResponse responseWithFile:filePath];
+                [response setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
               }
             }
           }
